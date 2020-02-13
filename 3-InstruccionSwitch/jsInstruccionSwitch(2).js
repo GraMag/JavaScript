@@ -1,10 +1,17 @@
 function mostrar()
 {
-//tomo la edad  
+
 var mesDelAño = document.getElementById('mes').value;
 
-alert (mesDelAño);
 
+
+if ((mesDelAño == "Julio") || (mesDelAño == "Agosto")) {
+    alert("Abrigate que hace frio.");
+} else if ((mesDelAño == "Septiembre") || (mesDelAño == "Octubre") || (mesDelAño == "Noviembre") || (mesDelAño == "Diciembre")) {
+    alert("Ya pasamos el frio, ahora calor!!!");
+} else {
+    alert("Abrigate que hace frio.");
+} 
 
 
 
