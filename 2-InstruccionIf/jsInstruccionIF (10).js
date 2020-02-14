@@ -2,7 +2,7 @@ function mostrar()
 {
 	//Genero el número RANDOM entre 1 y 10 
 	
-	var numRandom = parseInt(Math.floor(Math.random()*(10-1))+1);
+	var numRandom = Math.floor(Math.random()*(11-1))+1;
 	
 	if (numRandom >= 9){
 		alert(numRandom + "! Excelente!")
