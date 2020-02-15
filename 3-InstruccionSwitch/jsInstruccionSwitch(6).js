@@ -1,6 +1,6 @@
 function mostrar()
 {
-//tomo la edad  
+//tomo la hora  
 var laHora = document.getElementById('hora').value;
 
 switch(laHora) {
@@ -39,4 +39,6 @@ switch(laHora) {
         alert("La hora no existe");
         break;
     }    
+
+    
 }//FIN DE LA FUNCIÓN
