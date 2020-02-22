@@ -8,12 +8,13 @@ function mostrar()
 	
 	var respuesta='si';
 	
-	max = 0;
-	min = 100000000000000000000000000;
+
 
 	while(respuesta!='no') {
 		numero = parseInt(prompt("Ingrese un numero:")); 
-	
+		min = numero
+		max = numero
+
 		if (numero > max) {
 			max = numero;
 		}

@@ -8,7 +8,7 @@ function mostrar()
 	while (contador < 5){
 		var numero = parseInt(prompt("Ingresar numero:"));
 		acumulador = acumulador + numero;
-		contador++
+		contador++;
 	}
 
 
