@@ -5,34 +5,34 @@ function mostrar()
 	//declarar contadores y variables 
 	
 	var respuesta="si";
-	var contadorPos = 0
-	var contadorNeg = 0
-	var contadorCeros = 0
-	var contadorPar = 0
-	var contadorImpar = 0
-	var negativo = 0
-	var positivo = 0
+	var contadorPos = 0;
+	var contadorNeg = 0;
+	var contadorCeros = 0;
+	var contadorPar = 0;
+	var contadorImpar = 0;
+	var negativo = 0;
+	var positivo = 0;
 
 	while(respuesta!="no")
 	{
 		numero = parseInt(prompt("Ingrese un numero:")); 
 			if (numero == 0){
-				contadorCeros++
+				contadorCeros++;
 			} else if (numero > 0){
 				positivo = positivo + numero;
-				contadorPos++
+				contadorPos++;
 				if (numero % 2 == 0) {
-					contadorPar++
+					contadorPar++;
 				} else {
-					contadorImpar++
+					contadorImpar++;
 				}
 			} else {
 				negativo = negativo + numero;
-				contadorNeg++
+				contadorNeg++;
 				if (numero % 2 == 0) {
-					contadorPar++
+					contadorPar++;
 				} else {
-					contadorImpar++
+					contadorImpar++;
 				}		
 			}
 
