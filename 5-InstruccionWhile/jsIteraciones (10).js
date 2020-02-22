@@ -49,7 +49,17 @@ function mostrar()
 	alert("La diferencia entre positivos y negativos es: " + positivos - negativo);
 	*/
 
-	document.write("Cantidad de positivos: " + contadorPos + ", la suma de los mismos da: " + positivo + ". El promedio es: " + positivo/contadorPos + "<br>Cantidad de negativos: " + contadorNeg + ", la suma de los mismos da: " + negativo + ". El promedio es: " + negativo( + "<br>Cantidad de 0: " + contadorCeros + "Cantidad de numeros pares: " + contadorPar + "<br>La diferencia entre positivos y negativos es: " + (positivo - negativo));
+	if (contadorNeg == 0){
+		promNeg = 0;
+	} else {
+		promNeg = negativo/contadorNeg;
+	}
+	if (contadorPos == 0){
+		promPos = 0;
+	} else {
+		promPos = positivo/contadorPos;
+	}
+	document.write("Cantidad de positivos: " + contadorPos + ", la suma de los mismos da: " + positivo + ". El promedio es: " + promPos + "<br>Cantidad de negativos: " + contadorNeg + ", la suma de los mismos da: " + negativo + ". El promedio es: " + promNeg + "<br>Cantidad de 0: " + contadorCeros + "<br>Cantidad de numeros pares: " + contadorPar + "<br>La diferencia entre positivos y negativos es: " + (positivo - negativo));
 	
 
 
