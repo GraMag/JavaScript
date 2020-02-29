@@ -1,6 +1,6 @@
 function mostrar()
 {
-    var laHora = document.getElementById('hora').value;
+    var laHora = document.getElementById("laHora").value;
     var mensaje = "";
 
     switch(laHora) {
@@ -33,18 +33,18 @@ function mostrar()
         case "4":
         case "5":
         case "6":
-            mensaje = "Es de noche.";
+            if (laHora >= 20 && laHora <= 24) {
+                mensaje = "A dormir";
+            } else {
+                mensaje = "Es de noche.";  
+            }
             break;
         default:
             mensaje = "La hora no existe";
             break;
         }    
-    
-        if (laHora >= 20 && laHora <= 24) {
-            alert("A dormir");
-        } else {
-            alert(mensaje);
-        }
+        
+    alert(mensaje)
     
 }//FIN DE LA FUNCIÓN
 

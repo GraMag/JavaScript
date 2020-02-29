@@ -9,5 +9,9 @@ e.	Se pedirán un número positivo y se mostrará la cantidad de números Primos
 */
 function ComenzarIngreso () 
 {
- 	
+
+    numero = prompt("Ingrese un numero mayor o igual que 0: ");
+    
+
+
 }

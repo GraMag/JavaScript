@@ -4,16 +4,13 @@ function mostrar()
 	var contador=0;
 	// declarar variables
 	
-	
-	
+	var numero = 0;
 	var respuesta='si';
 	
-
-
-	while(respuesta!='no') {
+	do {
 		numero = parseInt(prompt("Ingrese un numero:")); 
-		min = numero
-		max = numero
+		var min = numero;
+		var max = numero;
 
 		if (numero > max) {
 			max = numero;
@@ -22,13 +19,11 @@ function mostrar()
 			min = numero;
 		}
 
-		continuar = prompt("Desea ingresar otro numero?");
-		if (continuar == respuesta) {
-			respuesta = continuar;
-		} else {
-			respuesta = continuar;
+		respuesta = prompt("Desea ingresar otro numero?").toLowerCase();
+		while (respuesta != "si" && respuesta != "no"){
+			respuesta = prompt("Respuesta invalida. Desea ingresar otro numero?").toLowerCase();
 		}
-	}
+	} while(respuesta!='no') 
 
 	document.getElementById("maximo").value = max;
 	document.getElementById("minimo").value = min;
