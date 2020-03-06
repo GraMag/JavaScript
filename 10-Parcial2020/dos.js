@@ -1,7 +1,7 @@
 /*Debemos realizar la carga de cuatro personas,
 de cada una debo obtener los siguientes datos:
 check - el nombre,
-        el género (validar "masculino", "femenino" u "otro"),
+check - el género (validar "masculino", "femenino" u "otro"),
 check - la edad (validar que sea un número y esté entre 18 y 100),
 check - el peso (validar que sea un número y mayor a 1).
 
@@ -18,8 +18,7 @@ Caso de prueba:
 Resultado:
 - Promedio de las edades mayores o iguales a 25: 41,67 (apróx).
 - Nombre de la persona menos pesada y su peso: "Gaby" (40 kg).
-- Cantidad de personas de género distinto a masculino ó peso mayor a 80: 3 (tres).
-*/
+- Cantidad de personas de género distinto a masculino ó peso mayor a 80: 3 (tres).*/
 
 function mostrar()
 {
@@ -42,9 +41,9 @@ function mostrar()
         name = prompt("Ingrese su nombre: ");
         gender = prompt("Ingrese su genero (Femenino / Masculino / Otro): ");
 
-        /*while ((gender.toLowerCase != "femenino") || (gender.toLowerCase != "masculino") || (gender.toLowerCase != "otro")) {
+        while (gender.toLowerCase() != "femenino" && gender.toLowerCase() != "masculino" && gender.toLowerCase() != "otro"    ) {
             gender = prompt("Genero invalido. Ingrese su genero (Femenino / Masculino / Otro): ");
-        }*/
+        }
 
         age = parseInt(prompt("Ingrese su edad: "));
 
@@ -65,89 +64,24 @@ function mostrar()
         }
         if (i == 0) { 
             pesoMin = weight;
-            personaMasLiviana = name;
+            personaMasLiviana = name;   
         } else {
             if (weight < pesoMin) {
                 pesoMin = weight;
                 personaMasLiviana = name;
             }
         }
-        if (weight > 80){
-            noManNor80++
+        if (weight > 80 || gender.toLowerCase() != "masculino"){
+            noManNor80++;
         }
     }
 
     if (cantMax25 == 0) {
         prom = "0, no se ingresaron personas mayores de 25 años.";
     } else {
-        prom = edadesMax25 / cantMax25;
+        prom = (edadesMax25 / cantMax25).toFixed(2);
     }
 
     alert("El promedio de las edades mayores o iguales a 25 es de: " + prom + "\nLa persona más liviana es: " + personaMasLiviana + " y su peso es: " + pesoMin + "kg.\nLas personas de genero =/= a masculino o mayores de 80Kgs son: " + noManNor80);
 
 }
-
-
-
-
-
-
-
-
-
-/*    var name = "";
-    var gender = "";
-    var age = 0;
-    var weight = 0;
-
-    var cantMayores25 = 0;
-    var sumMayores25 = 0;
-    var personaLiviana = name;
-    var noManNor80 = 0;
-
-    for (var i = 0; i < 4; i++) {
-        name = prompt("Ingrese su nombre:");
-    
-        age = parseInt(prompt("Ingrese su edad: "));
-        while (isNaN(age)) {
-            age = parseInt(prompt("No es un numero. Ingrese su edad:"));
-        }
-
-        if (age < 18 || age > 100) {
-            age=parseInt(prompt("Valor fuera de rango. Ingrese su edad: "));
-        }
-
-        if (age >= 25) {
-            cantMayores25++;
-            sumMayores25 = sumMayores25 + age;
-        }
-
-        gender = prompt("Ingrese su genero:");
-        //while ((gender.toLowerCase != "femenino") || (gender.toLowerCase != "masculino") || (gender.toLowerCase != "otro")) {
-          //      gender = prompt("Genero invalido. Ingrese su genero nuevamente:");   
-        //}
-    
-        weight = parseFloat(prompt("Ingrese su peso"));
-        while (isNaN(weight)) {
-            weight = parseFloat(prompt("No es un numero. Ingrese su peso:"));
-        } 
-        if (weight < 1) {
-            weight = parseFloat(prompt("Valor fuera de rango. Ingrese su peso: "));
-        }
-        if (pesoMin > weight) {
-            pesoMin = weight;
-            personaLiviana = name;
-        }
-        if (weight > 80) {
-            noManNor80++; 
-        }
-   }
-
-   if (cantMayores25 != 0) {
-       prom = sumMayores25/cantMayores25;
-   } else {
-       prom = "No se ingresaro personas mayores de 25."
-   }
-
-   alert("El promedio de las edades mayores a 25 es: " + prom + "\n La persona menos pesada y su peso es: " + personaLiviana + " (" + pesoMin + "Kg.)" + "\n  Cantidad de personas de género distinto a masculino ó peso mayor a 80: " + noManNor80)
-*/
