@@ -1,64 +1,153 @@
+/*Debemos realizar la carga de cuatro personas,
+de cada una debo obtener los siguientes datos:
+check - el nombre,
+        el género (validar "masculino", "femenino" u "otro"),
+check - la edad (validar que sea un número y esté entre 18 y 100),
+check - el peso (validar que sea un número y mayor a 1).
+
+check - a) El promedio de las edades mayores o iguales a 25.
+check - b) El nombre de la persona menos pesada y su peso.
+        c) La cantidad personas de género distinto a masculino ó peso mayor a 80.
+
+Caso de prueba:
+1) Nombre: "Ana"; Género: "mujer" (mal), Género: "f"(mal), Género: "femenino" (bien); Edad: 40; Peso: 60.
+2) Nombre: "Gaby"; Género: "otro"; Edad: "a" (mal), Edad: 17 (mal), Edad: 101 (mal), Edad: 18 (bien); Peso: 40.
+3) Nombre: "Luis"; Género: "masculino"; Edad: 60; Peso: "k" (mal), Peso: 0 (mal), Peso: 79 (bien).
+4) Nombre: "Alan"; Género: "masculino"; Edad: 25; Peso: 90.
+
+Resultado:
+- Promedio de las edades mayores o iguales a 25: 41,67 (apróx).
+- Nombre de la persona menos pesada y su peso: "Gaby" (40 kg).
+- Cantidad de personas de género distinto a masculino ó peso mayor a 80: 3 (tres).
+*/
+
 function mostrar()
 {
-  var nombre;
-  var genero;
-  var edad;
-  var peso;
-  var contador;
-  var acumuladorEdades=0;
-  var promedioEdades= (acumuladorEdades / 4);
-  var cantidadEdadesMayoresA25;
-  var NombrePersMenosPesada;
-  var PesoPersMenosPesada;
-  var cantDistMasculino=0;
-  var esPrimeraIteracion;
-  var respuesta;
+    var name = "";
+    var gender = "";
+    var age = 0;
+    var weight = 0;
 
-    for (contador =0 ; contador <4; contador++ ){   
-
-  nombre = prompt ("Ingrese el nombre: ");
-  genero = prompt ("Ingrese el genero: Femenino / Masculino / Otro ").toLowerCase();
-
-    while (genero != "femenino" && genero != "masculino" && genero!= "otro" ){
-            genero = prompt ("Dato invalido, por favor ingrese Femenino, Masculino u Otro; ").toLowerCase();
-            }
-
-  edad = prompt ("Ingrese la edad: ");
-  edad = parseInt("edad");
-            while (isNaN (edad) < 18 && edad >100){
-                edad = prompt ("Por favor, reingrese una edad valida entre 18 y 100 años: ");
-                edad = parseInt("edad");
-            } 
-  peso = prompt ("Ingrese el peso: ");
-  peso = parseInt ("peso");
-              while (peso<1){
-                peso = prompt("Por favor, reingrese un peso valido mayor a 1: ");
-                peso = parseInt ("peso");
-                }
-
-    if (contador == 0 ){
-        PesoPersMenosPesada = peso;
-    }
-    if (genero != "masculino" || peso > 80){
-        cantDistMasculino++;
-    }
-    if (edad >= 25 ){//puntoA
-        acumuladorEdades= acumuladorEdades + edad;
-        cantidadEdadesMayoresA25++;
-    }
-     if(cantidadEdadesMayoresA25 >0){
-         promedioEdades = acumuladorEdades / cantidadEdadesMayoresA25;
-         respuesta+= "El promedio de edades mayores a 25 es " + promedioEdades;
-     }
-    if(peso<PesoPersMenosPesada){
-        PesoPersMenosPesada=peso;
-        NombrePersMenosPesada=nombre;
-    }
+    var cantMax25 = 0;
+    var edadesMax25 = 0;
     
-    } //fin for  
+    var personaMasLiviana = name;
+    var pesoMin;
 
-    prompt ("El promedio de las edades iguales o mayores a 25 es: " + promedioEdades);
-    prompt ("La persona menos pesada se llama: " + NombrePersMenosPesada + " y su peso es: " + PesoPersMenosPesada);
-    prompt ("La cantidad de personas con genero distinto a masculino o con peso mayor a 80 es: " + cantDistMasculino);
+    var noManNor80 = 0;
 
+ 
+    for (var i = 0; i < 4; i++) {
+
+        name = prompt("Ingrese su nombre: ");
+        gender = prompt("Ingrese su genero (Femenino / Masculino / Otro): ");
+
+        /*while ((gender.toLowerCase != "femenino") || (gender.toLowerCase != "masculino") || (gender.toLowerCase != "otro")) {
+            gender = prompt("Genero invalido. Ingrese su genero (Femenino / Masculino / Otro): ");
+        }*/
+
+        age = parseInt(prompt("Ingrese su edad: "));
+
+        while (isNaN (age)) {
+            age = parseFloat(prompt("Edad invalida. Ingrese su edad: "));
+        }
+        while (age < 18 || age > 100) {
+            age = parseFloat(prompt("Edad fuera de rango. Ingrese su edad: "));
+        }   
+        if (age >= 25) {
+            edadesMax25 = edadesMax25 + age;
+            cantMax25++
+        }
+
+        weight = parseFloat(prompt("Ingrese su peso en Kg: "));
+        while (isNaN (weight) || weight <= 0 ) {
+            weight = parseFloat(prompt("Peso invalido. Ingrese su peso en Kg: "));
+        }
+        if (i == 0) { 
+            pesoMin = weight;
+            personaMasLiviana = name;
+        } else {
+            if (weight < pesoMin) {
+                pesoMin = weight;
+                personaMasLiviana = name;
+            }
+        }
+        if (weight > 80){
+            noManNor80++
+        }
+    }
+
+    if (cantMax25 == 0) {
+        prom = "0, no se ingresaron personas mayores de 25 años.";
+    } else {
+        prom = edadesMax25 / cantMax25;
+    }
+
+    alert("El promedio de las edades mayores o iguales a 25 es de: " + prom + "\nLa persona más liviana es: " + personaMasLiviana + " y su peso es: " + pesoMin + "kg.\nLas personas de genero =/= a masculino o mayores de 80Kgs son: " + noManNor80);
+
+}
+
+
+
+
+
+
+
+
+
+/*    var name = "";
+    var gender = "";
+    var age = 0;
+    var weight = 0;
+
+    var cantMayores25 = 0;
+    var sumMayores25 = 0;
+    var personaLiviana = name;
+    var noManNor80 = 0;
+
+    for (var i = 0; i < 4; i++) {
+        name = prompt("Ingrese su nombre:");
+    
+        age = parseInt(prompt("Ingrese su edad: "));
+        while (isNaN(age)) {
+            age = parseInt(prompt("No es un numero. Ingrese su edad:"));
+        }
+
+        if (age < 18 || age > 100) {
+            age=parseInt(prompt("Valor fuera de rango. Ingrese su edad: "));
+        }
+
+        if (age >= 25) {
+            cantMayores25++;
+            sumMayores25 = sumMayores25 + age;
+        }
+
+        gender = prompt("Ingrese su genero:");
+        //while ((gender.toLowerCase != "femenino") || (gender.toLowerCase != "masculino") || (gender.toLowerCase != "otro")) {
+          //      gender = prompt("Genero invalido. Ingrese su genero nuevamente:");   
+        //}
+    
+        weight = parseFloat(prompt("Ingrese su peso"));
+        while (isNaN(weight)) {
+            weight = parseFloat(prompt("No es un numero. Ingrese su peso:"));
+        } 
+        if (weight < 1) {
+            weight = parseFloat(prompt("Valor fuera de rango. Ingrese su peso: "));
+        }
+        if (pesoMin > weight) {
+            pesoMin = weight;
+            personaLiviana = name;
+        }
+        if (weight > 80) {
+            noManNor80++; 
+        }
    }
+
+   if (cantMayores25 != 0) {
+       prom = sumMayores25/cantMayores25;
+   } else {
+       prom = "No se ingresaro personas mayores de 25."
+   }
+
+   alert("El promedio de las edades mayores a 25 es: " + prom + "\n La persona menos pesada y su peso es: " + personaLiviana + " (" + pesoMin + "Kg.)" + "\n  Cantidad de personas de género distinto a masculino ó peso mayor a 80: " + noManNor80)
+*/
