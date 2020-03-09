@@ -11,59 +11,54 @@ c) Cuántas unidades de jabones hay en total*/
 
 function mostrar()
 {
-	var tipo = "";
+	var producto = "";
 	var precio = 0;
-	var cantidad = 0;
-	var marca = "";
-	var fabricante = "";
-	var bandera = 0;
-	var barbijoMasCaro;
-	var barbijoUnidades;
-	var barbijoFabricante;
-	var unidadesMax;
-	var unidadesFabricante;
-	var contadorJabon = 0;
+	var cantUnit = 0;
+	var marca;
+	var fabricante;
+	var barMasCaro = 0;
+	var barCantUnit;
+	var barFabricante;
+	var maxCant = 0;
+	var maxFab;
+	var totalJabon = 0;
 
 	for (i = 0; i < 5; i++) {
-	
 		do {
-			tipo = prompt("Ingrese producto: ").toLowerCase();			
-		} while (tipo != "barbijo" && tipo != "jabon" && tipo != "alcohol");
-
+			producto = prompt("Ingrese producto:");
+		} while (producto != "barbijo" && producto != "jabon" && producto != "alcohol");
 		do {
-			precio = prompt("Ingrese precio: $");
+			precio = prompt("Ingrese precio:");
+			precio = parseFloat(precio);
 		} while (isNaN(precio) || precio < 100 || precio > 300);
-
 		do {
-			cantidad = prompt("Ingrese cantidad de unidades: ");
-		} while (isNaN(cantidad) || cantidad < 1 || cantidad > 1000);
-
+			cantUnit = prompt("Ingrese cantidad:");
+			cantUnit = parseInt(cantUnit);
+		} while (isNaN(cantUnit) || cantUnit < 1 || cantUnit > 1000);
 		do {
-			marca = prompt("Ingrese marca: ");	
-		} while (fabricante != " ")
-
+			marca = prompt("Ingrese marca:");
+		} while (marca.length == 0 || marca == " ");
 		do {
-			fabricante = prompt("Ingrese fabricante: ");
-		} while (fabricante != " ")
-
-		if (tipo == "barbijo" && bandera == 0 || barbijoMasCaro < precio)  {
-			barbijoMasCaro = precio;
-			barbijoUnidades = cantidad;
-			barbijoFabricante = fabricante;
+			fabricante = prompt("Ingrese fabricante:");
+		} while (fabricante.length == 0 || marca == " ")
+		
+		if (producto == "barbijo" && barMasCaro < precio) {
+			barMasCaro == precio;
+			barCantUnit = cantUnit;
+			barFabricante = fabricante;
 		}
 
-		if (bandera == 0 || unidadesMax < cantidad) {
-			unidadesMax = cantidad;
-			unidadesFabricante = fabricante;
-			bandera++
+		if (maxCant < cantUnit) {
+			maxCant = cantUnit;
+			maxFab = fabricante;
 		}
 
-		if (tipo == "jabon") {
-			contadorJabon++
+		if (producto == "jabon") {
+			totalJabon++;
 		}
 	}
 
-	alert ("El fabricante de barbijos, " + barbijoFabricante + ", es el más caro y se vendieron " + barbijoUnidades + "unidades." 
-		+ "\nEl item con más unidades es fabricado por: " + unidadesFabricante 
-		+ "\nEn total hay " + contadorJabon + " unidades de jabon.");
+	alert("El fabricante de los barbijos más caros es: " + barFabricante + " ese pedido constaba de " + barCantUnit + " unidades."
+		+ "El pedido con mayor cantidad de unidades (" + maxCant + ") fue del fabricante " + maxFab 
+		+ "En total hay: " + totalJabon + "jabones." )
 }
