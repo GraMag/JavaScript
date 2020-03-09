@@ -27,9 +27,10 @@ var continuar = "si";
 var medioDePago;
 
 do {
-    
+    do {
         nombre = prompt("Ingrese su nombre: ");
-
+    } while (nombre == "" && nombre == " ");
+    
     do {
         cantidadPersonas = prompt("Cantidad de huespedes: ");
         cantidadPersonas = parseInt(cantidadPersonas);
@@ -38,7 +39,7 @@ do {
     do {
         duracionEstadia = prompt("Duracion de la estadia: ");
         duracionEstadia = parseInt(duracionEstadia);
-    } while (isNaN(duracionEstadia) || duracionEstadia < 0);
+    } while (isNaN(duracionEstadia) || duracionEstadia < 1);
 
     do {
         formaDePago = prompt("Ingrese forma de pago").toLowerCase;
@@ -83,8 +84,7 @@ do {
         medioDePago = "tarjeta";
     }
 
-
 alert("El huesped que trajo mayor cantidad de personas es " + nombreMaxCantPax
-    + "\nLa cantidad de huespedes en la estadia más larga es de: " + cantidadPersonas
+    + "\nLa cantidad de huespedes en la estadia más larga es de: " + maxCantPax
     + "\nEl medio de pago más utilizado es: " + medioDePago
     + "\nEl promedio de estadia es de: " + (acumuladorEstadia/contadorDeReservas).toFixed(0) + " dias." )

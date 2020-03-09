@@ -36,7 +36,7 @@ function mostrar()
       } while (tipo != "a" && tipo != "v" && tipo != "m");
    
       if (maxPrecio < precio) {
-        maxPrecio = caro;
+        maxPrecio = precio;
         tipoCaro = tipo;
       }
 
@@ -57,7 +57,7 @@ function mostrar()
       descuento = 0;
     }
     
-    promedio = totalKg / bruto;
+    promedio = bruto / totalKg;
 
     alert("Bruto: " + bruto
         + "Total con descuento: " + (bruto - descuento)

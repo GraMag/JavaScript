@@ -65,7 +65,7 @@ function mostrar()
 		if (sexo == "f") {
 			totalMujeres++;
 			acumuladorEdadesF = acumuladorEdadesF + edad;
-		} else if (civil == "c" || civil == "v") {
+		if (sexo == "f" && civil != "s") {
 			contadorMujeresCoV++;
 		}
 
