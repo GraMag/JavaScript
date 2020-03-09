@@ -12,60 +12,55 @@ f) El promedio de precio por kilo en total.*/
 
 function mostrar()
 {
-  var peso = 0;
-  var precio = 0;
-  var tipo = "";
-  var bandera = 0;
-  var alimentoMasCaro;
-  var tipoMasCaro;
-  var acumuladorPrecio = 0;
-  var contadorPeso = 0;
-  var promedioPeso;
-  var descuento;
-  var continuar = "si";
+    var peso = 0;
+    var precio = 0;
+    var tipo = "";
+    var totalKg = 0;
+    var tipoCaro;
+    var maxPrecio = 0;
+    var bruto = 0;
+    var promedio;
+    var descuento;
 
-  do {
+    do {
+      do {
+        peso = prompt("ingrese peso en kilo: ");
+        peso = parseFloat(peso);
+      } while (isNaN(peso) || peso < 10 || peso > 1000);
+      do {
+        precio = prompt("Ingrese precio por kilo: ");
+        precio = parseFloat(precio);
+      } while (isNaN(precio) || precio < 1);
+      do {
+        tipo = prompt("Ingrese tipo: ").toLowerCase();  
+      } while (tipo != "a" && tipo != "v" && tipo != "m");
+   
+      if (maxPrecio < precio) {
+        maxPrecio = caro;
+        tipoCaro = tipo;
+      }
+
+      totalKg = totalKg + peso;
+      bruto = bruto + precio;
+
+      do {
+        continuar = prompt("Desea ingresar otro pasajero? Si / No").toLowerCase()
+        } while (continuar != "si" && continuar != "no");
     
-    do {
-      peso = prompt ("Ingrese el peso en kg: ");
-      peso = parseFloat(peso);
-    } while (isNaN(peso) || peso < 10 || peso > 1000);
+    } while (continuar == "si");
 
-    do {
-      precio = prompt ("Ingrese precio por kg: $");
-      precio = parseFloat(precio);
-    } while (isNaN(precio) || precio < 1);
-
-    do {
-      tipo = prompt ("Ingrese tipo de producto: V / A / M").toLowerCase();
-    } while (tipo != "a" && tipo != "v" && tipo != "m");
-
-    acumuladorPrecio = acumuladorPrecio + precio;
-    contadorPeso++;
-
-    if (bandera == 0 || precio > alimentoMasCaro) {
-      alimentoMasCaro = precio;
-      tipoMasCaro == tipo;
-      bandera++;
+    if (totalKg > 300) {
+      descuento = bruto*0.25;
+    } else if (totalKg > 100) {
+      descuento = bruto*0.15;
+    } else {
+      descuento = 0;
     }
+    
+    promedio = totalKg / bruto;
 
-    do {
-      continuar = prompt("Desea ingresar otro alimento? Si / No").toLowerCase()
-    } while (continuar != "si" && continuar != "no");
-  } while (continuar == "si");
-
-  promedioPeso = contadorpeso/acumuladorPrecio;
-  
-  if (acumuladorPrecio > 300) {
-    descuento = acumuladorPrecio*0.25;
-  } else if (acumuladorPrecio > 100) {
-    descuento = acumuladorPrecio*0.15;
-  } else {
-    descuento = 0;
-  }
-
-  alert("El importe total a pagar es de: $" + (acumuladorPrecio*1.21 + descuento)
-      + "\nEl bruto es de: $" + acumuladorPrecio + "\nEl descuento es de: $" + descuento 
-      + "\nEl precio promedio por kilo es: $" + promedioPeso  
-      + "\nEl tipo de producto más caro es: " + tipoMasCaro);
+    alert("Bruto: " + bruto
+        + "Total con descuento: " + (bruto - descuento)
+        + "\nEl producto mas caro es: " + tipoCaro
+        + "\nEl precio promedio por kg es de: " + promedio);
 }
